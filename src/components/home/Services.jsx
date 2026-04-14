@@ -1,11 +1,11 @@
 "use client";
 
 import { memo, useState } from "react";
+import Image from "next/image";
 import { SERVICES } from "../../constants";
-import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 
-const ServiceCard = memo(({ service, index, isHovered, onHover }) => {
+const ServiceCard = memo(({ service, index, onHover }) => {
   const Icon = service.icon;
 
   return (
@@ -17,13 +17,21 @@ const ServiceCard = memo(({ service, index, isHovered, onHover }) => {
       onMouseEnter={() => onHover(index)}
       onMouseLeave={() => onHover(null)}
     >
-      {/* Gradient overlay on hover */}
-      <div
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-        style={{
-          background: `linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(245, 158, 11, 0) 100%)`,
-        }}
-      />
+      <div className="relative h-48 overflow-hidden group-hover:scale-105 transition-transform duration-500">
+        {service.image ? (
+          <Image
+            src={service.image}
+            alt={service.title}
+            width={500}
+            height={500}
+            className="object-cover"
+          />
+        ) : (
+          <div className="w-full h-full bg-slate-100 flex items-center justify-center">
+            <Icon size={48} className="text-slate-300" />
+          </div>
+        )}
+      </div>
 
       <div className="p-6 relative z-10">
         {/* Icon with animated background */}
@@ -96,8 +104,7 @@ const Services = () => {
   return (
     <section
       id="services"
-      className="py-24 relative overflow-hidden"
-      style={{ backgroundColor: "var(--white)" }}
+      className="section-padding relative overflow-hidden bg-white py-10"
     >
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -111,17 +118,16 @@ const Services = () => {
         />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container relative z-10 flex flex-col items-center">
         {/* Enhanced Header */}
-        <header className="text-center max-w-3xl mx-auto mb-16">
+        <header className="text-center max-w-3xl mb-16">
           <div className="inline-flex items-center gap-2 mb-4 animate-fade-in">
             <div
               className="w-8 h-px"
               style={{ backgroundColor: "var(--accent)" }}
             />
             <span
-              className="font-semibold text-sm uppercase tracking-wider"
-              style={{ color: "var(--accent)" }}
+              className="font-semibold text-sm uppercase tracking-wider text-[var(--accent)]"
             >
               What We Do
             </span>
@@ -132,22 +138,19 @@ const Services = () => {
           </div>
 
           <h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight animate-fade-in-up"
-            style={{ color: "var(--primary)" }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight animate-fade-in-up text-[var(--primary)]"
           >
             Our Services
           </h2>
 
           <div className="flex justify-center mb-6">
             <div
-              className="w-16 h-1 rounded-full"
-              style={{ backgroundColor: "var(--accent)" }}
+              className="w-16 h-1 rounded-full bg-[var(--accent)]"
             />
           </div>
 
           <p
-            className="text-lg leading-relaxed max-w-2xl mx-auto animate-fade-in-up animation-delay-200"
-            style={{ color: "var(--muted)" }}
+            className="text-lg leading-relaxed max-w-2xl mx-auto animate-fade-in-up animation-delay-200 text-[var(--muted)]"
           >
             From concept to completion, we deliver a full spectrum of
             construction and contracting services with precision and trust.
@@ -155,7 +158,7 @@ const Services = () => {
         </header>
 
         {/* Services Grid with staggered animation */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 mb-16">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 mb-16 w-full">
           {SERVICES.map((service, index) => (
             <div
               key={service.title}

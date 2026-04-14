@@ -1,21 +1,17 @@
 "use client";
 
-import Link from "next/link";
-import { Phone, Mail, MapPin, ArrowUp } from "lucide-react";
 import Button from "@/components/ui/Button";
 import {
-  MotionDiv,
-  MotionFooter,
-  MotionButton,
-  fadeInUp,
   fadeInLeft,
   fadeInRight,
-  hoverScale,
-  hoverLift,
+  fadeInUp,
+  MotionDiv,
   StaggerContainer,
   StaggerItem,
-  ScrollReveal,
 } from "@/components/ui/Motion";
+import { ArrowUp, Mail, MapPin, Phone } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -43,7 +39,7 @@ const Footer = () => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
       variants={fadeInUp}
-      className="relative overflow-hidden"
+      className="relative overflow-hidden px-10"
       style={{ backgroundColor: "var(--primary)" }}
     >
       {/* Animated Background Elements */}
@@ -77,7 +73,7 @@ const Footer = () => {
         }}
       />
 
-      <div className="container mx-auto py-16 px-4 relative z-10">
+      <div className="container py-16 relative z-10">
         <div className="grid md:grid-cols-4 gap-10">
           {/* LEFT - BRAND */}
           <MotionDiv
@@ -97,7 +93,7 @@ const Footer = () => {
                 className="text-2xl font-bold mb-4"
                 style={{ color: "var(--white)" }}
               >
-                AFRA<span style={{ color: "var(--accent)" }}>SCO</span>
+                <Image src="/logo.png" alt="Logo" width={100} height={100} />
               </div>
             </MotionDiv>
 
@@ -134,7 +130,7 @@ const Footer = () => {
                     />
                   </MotionDiv>
                   <span style={{ color: "rgba(255,255,255,0.6)" }}>
-                    +966 50 123 4567
++966 53 020 7010
                   </span>
                 </MotionDiv>
               </StaggerItem>
@@ -262,7 +258,7 @@ const Footer = () => {
         className="py-6 text-center text-sm"
         style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}
       >
-        <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="container px-4 flex flex-col md:flex-row justify-between items-center gap-4">
           <MotionDiv
             whileHover={{ scale: 1.05 }}
             style={{ color: "rgba(255,255,255,0.4)" }}

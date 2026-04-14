@@ -2,14 +2,25 @@
 
 :root {
   --primary: #0f172a;
+  --bg: #f8fafc;
+  --white: #ffffff;
   --accent: #f59e0b;
   --muted: #64748b;
   --border: #e2e8f0;
-  --bg: #f8fafc;
-  --white: #ffffff;
 }
 
-body {
-  background: var(--bg);
-  color: var(--primary);
+@layer base {
+  body {
+    @apply bg-[var(--bg)] text-[var(--primary)];
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl;
+  }
 }

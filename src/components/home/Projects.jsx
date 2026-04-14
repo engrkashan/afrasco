@@ -4,26 +4,25 @@ import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "@/components/ui/Button";
-import Card from "@/components/ui/Card";
 
 const PROJECTS = [
   {
     title: "Commercial Complex",
-    desc: "Multi-story commercial building in Riyadh featuring sustainable design and smart building technologies.",
+    desc: "A landmark development combining a vibrant commercial complex with elegantly designed luxury villas, crafted with world-class standards and timeless architecture.",
     category: "Construction",
     image: "/home/project1.jpg",
     stats: { area: "50,000 m²", duration: "24 months", value: "SAR 120M" },
   },
   {
-    title: "Highway Development",
-    desc: "120km highway project in the Eastern Province connecting major industrial zones.",
-    category: "Infrastructure",
+    title: "Electrical Infrastructure",
+    desc: "Comprehensive electrical works and power distribution systems for large-scale industrial and commercial facilities.",
+    category: "Electrical",
     image: "/home/project2.jpg",
-    stats: { area: "120 km", duration: "18 months", value: "SAR 250M" },
+    stats: { area: "Industrial", duration: "16 months", value: "SAR 45M" },
   },
   {
     title: "Luxury Villas",
-    desc: "Residential villa compound in Jeddah with modern amenities and landscape design.",
+    desc: "premium luxury villas built with precision and excellence.",
     category: "Construction",
     image: "/home/project3.jpg",
     stats: { area: "25,000 m²", duration: "12 months", value: "SAR 80M" },
@@ -135,64 +134,91 @@ const ProjectModal = ({ project, onClose }) => {
 /* ---------------- CARD ---------------- */
 
 const ProjectCard = ({ project, onViewDetails }) => {
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.div
       variants={cardVariants}
-      whileHover={{ y: -8, scale: 1.02 }}
-      transition={{ type: "spring", stiffness: 200, damping: 15 }}
+      whileHover={{ y: -10 }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      className="relative h-[500px] rounded-2xl overflow-hidden cursor-pointer group shadow-2xl"
+      onClick={() => onViewDetails(project)}
     >
-      <Card
-        variant="default"
-        hover={false}
-        padding={false}
-        className="group overflow-hidden h-full cursor-pointer"
-        interactive
-        onClick={() => onViewDetails(project)}
+      {/* Background Image with Zoom */}
+      <motion.div
+        className="absolute inset-0 z-0"
+        animate={{ scale: isHovered ? 1.1 : 1 }}
+        transition={{ duration: 0.6 }}
       >
-        <div className="relative overflow-hidden">
-          <div className="relative w-full h-80 overflow-hidden bg-gray-900">
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              className={`object-cover transition-all duration-700 group-hover:scale-110 ${
-                imageLoaded ? "opacity-100" : "opacity-0"
-              }`}
-              onLoadingComplete={() => setImageLoaded(true)}
-            />
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          className="object-cover"
+        />
+        {/* Overlay Layers */}
+        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/40 to-transparent opacity-90" />
+      </motion.div>
 
-            {!imageLoaded && <div className="absolute inset-0 animate-pulse" />}
+      {/* Content Container */}
+      <div className="absolute inset-0 z-10 p-8 flex flex-col justify-end">
+        {/* Category Badge - Glassmorphism */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="mb-4"
+        >
+          <span className="px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest bg-white/10 backdrop-blur-md border border-white/20 text-[var(--accent)]">
+            {project.category}
+          </span>
+        </motion.div>
 
-            <div className="absolute top-4 left-4 z-10">
-              <span className="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full backdrop-blur-md bg-black/70 text-white">
-                {project.category}
-              </span>
+        {/* Title */}
+        <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-[var(--accent)] transition-colors duration-300">
+          {project.title}
+        </h3>
+
+        {/* Description - Animated Reveal */}
+        <motion.div
+          initial={false}
+          animate={{
+            height: isHovered ? "auto" : 0,
+            opacity: isHovered ? 1 : 0,
+            marginTop: isHovered ? 12 : 0,
+          }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className="overflow-hidden"
+        >
+          <p className="text-white/70 text-sm leading-relaxed max-w-sm">
+            {project.desc}
+          </p>
+          
+          <div className="mt-6 flex items-center gap-4 text-xs font-semibold text-white/50">
+            <div className="flex flex-col">
+              <span className="text-[var(--accent)]">Duration</span>
+              <span>{project.stats.duration}</span>
             </div>
-
-            <div className="absolute inset-0 opacity-60 group-hover:opacity-80 transition-opacity duration-500 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+            <div className="w-px h-6 bg-white/10" />
+            <div className="flex flex-col">
+              <span className="text-[var(--accent)]">Scale</span>
+              <span>{project.stats.area}</span>
+            </div>
           </div>
+        </motion.div>
 
-          <div className="p-6">
-            <h3 className="text-xl font-bold mb-2 group-hover:text-[var(--accent)] transition-colors">
-              {project.title}
-            </h3>
-
-            <p
-              className="text-sm leading-relaxed mb-4"
-              style={{ color: "var(--muted)" }}
-            >
-              {project.desc}
-            </p>
-          </div>
-        </div>
-      </Card>
+        {/* Decorative Indicator */}
+        <motion.div
+          className="h-1 bg-[var(--accent)] mt-4 rounded-full"
+          initial={{ width: 0 }}
+          animate={{ width: isHovered ? 60 : 0 }}
+          transition={{ duration: 0.4 }}
+        />
+      </div>
     </motion.div>
   );
 };
-
-/* ---------------- MAIN ---------------- */
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -201,19 +227,18 @@ const Projects = () => {
     <>
       <section
         id="projects"
-        className="py-24 relative overflow-hidden"
-        style={{ backgroundColor: "var(--primary)" }}
+        className="section-padding relative overflow-hidden bg-[var(--primary)] py-10"
       >
-        <div className="container mx-auto px-4 relative z-10">
-          <header className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+        <div className="container relative z-10 flex flex-col items-center">
+          <header className="text-center max-w-3xl mb-16">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white text-center">
               Featured Projects
             </h2>
           </header>
 
           {/* GRID WITH STAGGER ANIMATION */}
           <motion.div
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full"
             variants={sectionVariants}
             initial="hidden"
             whileInView="show"

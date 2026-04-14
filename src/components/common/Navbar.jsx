@@ -1,19 +1,17 @@
 "use client";
 
-import Link from "next/link";
-import { useState, useEffect } from "react";
-import { Menu, X, ChevronRight } from "lucide-react";
-import { NAV_ITEMS } from "@/constants";
-import Button from "@/components/ui/Button";
 import {
   MotionDiv,
-  MotionNav,
   fadeInDown,
+  hoverLift,
   staggerContainer,
   staggerItem,
-  hoverLift,
-  PageTransition,
 } from "@/components/ui/Motion";
+import { NAV_ITEMS } from "@/constants";
+import { Menu, X } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -37,7 +35,7 @@ const Navbar = () => {
           scrolled ? "bg-[#0f172a] shadow-sm" : "bg-transparent"
         }`}
       >
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+        <div className="container h-16 flex items-center justify-between">
           {/* Logo with hover animation */}
           <MotionDiv whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
@@ -45,7 +43,7 @@ const Navbar = () => {
               className="font-bold text-xl transition hover:opacity-80"
               style={{ color: "var(--white)" }}
             >
-              AFRA<span style={{ color: "var(--accent)" }}>SCO</span>
+             <Image src="/logo.png" alt="Logo" width={100} height={100} />
             </Link>
           </MotionDiv>
 
@@ -75,19 +73,11 @@ const Navbar = () => {
 
           {/* CTA and Mobile Menu */}
           <div className="flex items-center gap-3">
-            <MotionDiv
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="hidden lg:inline-flex"
-            >
-              <Button size="md">Get Quote</Button>
-            </MotionDiv>
 
             <MotionDiv whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
               <button
                 onClick={() => setOpen(!open)}
-                className="lg:hidden p-2 rounded-lg transition hover:bg-gray-100"
-                style={{ color: "var(--primary)" }}
+                className="lg:hidden p-2 rounded-lg transition text-white hover:bg-gray-100"
                 aria-label={open ? "Close menu" : "Open menu"}
               >
                 {open ? <X size={24} /> : <Menu size={24} />}
@@ -139,15 +129,6 @@ const Navbar = () => {
                 </Link>
               </MotionDiv>
             ))}
-            <MotionDiv
-              variants={staggerItem}
-              whileHover={{ scale: 1.02 }}
-              className="pt-2"
-            >
-              <Button fullWidth size="md">
-                Get Quote
-              </Button>
-            </MotionDiv>
           </MotionDiv>
         </MotionDiv>
       </nav>

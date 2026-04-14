@@ -7,16 +7,16 @@ const Quote = memo(() => {
   return (
     <section
       id="quote"
-      className="py-24 bg-[#0B1B2B] text-white relative overflow-hidden"
+      className="py-10 bg-[#0B1B2B] text-white relative overflow-hidden"
     >
-      <div className="container mx-auto max-w-2xl px-4">
+      <div className="container mx-auto max-w-2xl px-4 flex flex-col items-center text-center">
         {/* Header */}
-        <header className="text-center mb-12">
+        <header className="mb-12">
           <span className="text-[#FF8A3D] font-semibold text-sm uppercase tracking-wider">
             Free Estimate
           </span>
 
-          <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-2 mb-4">
             Request a Quote
           </h2>
 

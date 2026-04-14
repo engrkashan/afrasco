@@ -7,10 +7,6 @@ import {
   StaggerItem,
   HoverCard,
   MotionDiv,
-  ScrollReveal,
-  fadeInLeft,
-  fadeInRight,
-  MotionSpan,
 } from "@/components/ui/Motion";
 
 const ValueCard = ({ icon, title, desc, index }) => {
@@ -143,21 +139,19 @@ export default function About() {
   ];
 
   const stats = [
-    { value: "15", suffix: "+", label: "Years of Excellence" },
-    { value: "500", suffix: "+", label: "Projects Completed" },
-    { value: "98", suffix: "%", label: "Client Satisfaction" },
-    { value: "200", suffix: "+", label: "Expert Team Members" },
+    { value: "50", suffix: "+", label: "Projects Completed" },
+    { value: "100", suffix: "+", label: "Happy Clients" },
+    { value: "150", suffix: "+", label: "Expert Workers" },
   ];
 
   return (
-    <ScrollReveal
+    <section
       id="about"
-      className="py-20 md:py-32 relative overflow-hidden"
-      style={{ backgroundColor: "var(--bg)" }}
+      className="section-padding relative overflow-hidden py-10"
     >
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container relative z-10 flex flex-col items-center">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mb-16">
           <FadeInUp delay={0.1}>
             <span
               className="text-sm font-semibold uppercase tracking-wider inline-block mb-3"
@@ -169,7 +163,7 @@ export default function About() {
 
           <FadeInUp delay={0.2}>
             <h2
-              className="text-3xl md:text-5xl font-bold mb-6 leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
               style={{ color: "var(--primary)" }}
             >
               Your Trusted Construction Partner
@@ -189,19 +183,18 @@ export default function About() {
 
           <FadeInUp delay={0.4}>
             <p
-              className="text-lg leading-relaxed"
-              style={{ color: "var(--muted)" }}
+              className="text-lg leading-relaxed text-[var(--muted)]"
             >
-              With over 15 years of experience in Saudi Arabia, Afrasco has
-              built a reputation for delivering exceptional construction,
-              plumbing, and electrical services with unwavering commitment to
-              quality.
+              At Afrasco, we focus on building strong relationships through
+              trust, quality work, and timely delivery. With a skilled team and
+              a commitment to excellence, we ensure every project is completed
+              with precision, safety, and efficiency.
             </p>
           </FadeInUp>
         </div>
 
         {/* Core Values Section */}
-        <div className="mb-20">
+        <div className="mb-20 w-full">
           <StaggerContainer>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {values.map((item, index) => (
@@ -217,8 +210,7 @@ export default function About() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.6, duration: 0.6 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t"
-          style={{ borderColor: "var(--border)" }}
+          className="grid grid-cols-2 md:grid-cols-3 gap-6 pt-12 border-t border-[var(--border)] w-full"
         >
           {stats.map((stat, index) => (
             <StatCounter
@@ -262,6 +254,6 @@ export default function About() {
           backgroundSize: "40px 40px",
         }}
       />
-    </ScrollReveal>
+    </section>
   );
 }

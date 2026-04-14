@@ -4,11 +4,8 @@ import { useState } from "react";
 import { Phone, Mail, MapPin, Send } from "lucide-react";
 import {
   FadeInUp,
-  StaggerContainer,
-  StaggerItem,
   HoverCard,
   MotionDiv,
-  ScrollReveal,
   MotionButton,
   fadeInLeft,
   fadeInRight,
@@ -26,9 +23,9 @@ const theme = {
 const CONTACT_INFO = [
   {
     title: "Phone",
-    value: "+966 50 123 4567",
+    value: "+966 53 020 7010",
     icon: Phone,
-    link: "tel:+966501234567",
+    link: "tel:+966530207010",
   },
   {
     title: "Email",
@@ -110,10 +107,10 @@ export default function Contact() {
   };
 
   return (
-    <ScrollReveal className="py-20 bg-white">
-      <div className="container mx-auto px-4">
+    <section id="contact" className="section-padding bg-white py-10">
+      <div className="container flex flex-col items-center">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mb-16">
           <FadeInUp delay={0.1}>
             <span
               className="text-sm font-semibold uppercase tracking-wider inline-block"
@@ -125,7 +122,7 @@ export default function Contact() {
 
           <FadeInUp delay={0.2}>
             <h2
-              className="text-3xl md:text-4xl font-bold mt-2 mb-4"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mt-2 mb-4"
               style={{ color: theme.primary }}
             >
               Contact Us
@@ -140,7 +137,7 @@ export default function Contact() {
         </div>
 
         {/* Grid */}
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-12 max-w-5xl w-full">
           {/* LEFT SIDE */}
           <div>
             <div className="space-y-6 mb-8">
@@ -358,6 +355,6 @@ export default function Contact() {
           </MotionDiv>
         </div>
       </div>
-    </ScrollReveal>
+    </section>
   );
 }

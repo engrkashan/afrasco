@@ -22,15 +22,14 @@ export const NAV_ITEMS = [
 
 /* HERO STATS */
 export const HERO_STATS = [
-  { value: "15+", label: "Years", icon: Shield },
-  { value: "500+", label: "Projects", icon: HardHat },
-  { value: "200+", label: "Clients", icon: Users },
-  { value: "50+", label: "Experts", icon: Trophy },
+  { value: "50+", label: "Projects", icon: HardHat },
+  { value: "100+", label: "Clients", icon: Users },
+  { value: "150+", label: "Expert Workers", icon: Trophy },
 ];
 
 /* CONTACT */
 export const CONTACT_INFO = [
-  { title: "Phone", value: "+966 50 123 4567", icon: Phone },
+  { title: "Phone", value: "+966 53 020 7010", icon: Phone },
   { title: "Email", value: "info@afrasco.com", icon: Mail },
   { title: "Location", value: "Riyadh, Saudi Arabia", icon: MapPin },
 ];
@@ -87,20 +86,24 @@ export const SERVICES = [
     title: "Plumbing Services",
     desc: "Complete plumbing solutions including installation, repair, and maintenance for residential and commercial properties.",
     icon: Wrench,
+    image: "/services/plumbing.png",
   },
   {
     title: "Electrical Works",
     desc: "Professional electrical installations, wiring, panel upgrades, lighting systems, and power distribution with full safety compliance.",
     icon: Zap,
+    image: "/services/electrical.png",
   },
   {
     title: "Infrastructure Projects",
     desc: "Large-scale civil engineering projects including roads, water networks, sewage systems, and urban infrastructure development.",
     icon: Building2,
+    image: "/services/infrastructure.png",
   },
   {
     title: "Maintenance & Repair",
     desc: "Preventive maintenance, emergency repairs, and complete facility management solutions for long-term reliability.",
     icon: HardHat,
+    image: "/services/maintenance.png",
   },
 ];
