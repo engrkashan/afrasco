@@ -10,22 +10,34 @@ const PROJECTS = [
     title: "Commercial Complex",
     desc: "A landmark development combining a vibrant commercial complex with elegantly designed luxury villas, crafted with world-class standards and timeless architecture.",
     category: "Construction",
-    image: "/home/project1.jpg",
-    stats: { area: "50,000 m²", duration: "24 months", value: "SAR 120M" },
+    image: "/home/commercial-complex.jpeg",
+    stats: {
+      area: "50,000 m²",
+      duration: "24 months",
+      value: "SAR 120M",
+    },
   },
   {
     title: "Electrical Infrastructure",
-    desc: "Comprehensive electrical works and power distribution systems for large-scale industrial and commercial facilities.",
+    desc: "On-site electrical works executed with precision, including wiring, panel installations, and power distribution systems to support modern construction projects.",
     category: "Electrical",
-    image: "/home/project2.jpg",
-    stats: { area: "Industrial", duration: "16 months", value: "SAR 45M" },
+    image: "/home/electrical-work.jpg",
+    stats: {
+      area: "Industrial",
+      duration: "16 months",
+      value: "SAR 45M",
+    },
   },
   {
     title: "Luxury Villas",
-    desc: "premium luxury villas built with precision and excellence.",
+    desc: "Premium luxury villas built with precision and excellence, creating homes that offer comfort, elegance, and lasting value.",
     category: "Construction",
-    image: "/home/project3.jpg",
-    stats: { area: "25,000 m²", duration: "12 months", value: "SAR 80M" },
+    image: "/home/luxury-villas.jpeg",
+    stats: {
+      area: "25,000 m²",
+      duration: "12 months",
+      value: "SAR 80M",
+    },
   },
 ];
 
@@ -194,7 +206,7 @@ const ProjectCard = ({ project, onViewDetails }) => {
           <p className="text-white/70 text-sm leading-relaxed max-w-sm">
             {project.desc}
           </p>
-          
+
           <div className="mt-6 flex items-center gap-4 text-xs font-semibold text-white/50">
             <div className="flex flex-col">
               <span className="text-[var(--accent)]">Duration</span>
