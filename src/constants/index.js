@@ -22,14 +22,14 @@ export const NAV_ITEMS = [
 
 /* HERO STATS */
 export const HERO_STATS = [
-  { value: "50+", label: "Projects", icon: HardHat },
-  { value: "100+", label: "Clients", icon: Users },
+  { value: "30+", label: "Projects", icon: HardHat },
+  { value: "20+", label: "Clients", icon: Users },
   { value: "150+", label: "Expert Workers", icon: Trophy },
 ];
 
 /* CONTACT */
 export const CONTACT_INFO = [
-  { title: "Phone", value: "+966 53 020 7010", icon: Phone },
+  { title: "Phone", value: "+966 53 535 3378", icon: Phone },
   { title: "Email", value: "info@afrasco.com", icon: Mail },
   { title: "Location", value: "Riyadh, Saudi Arabia", icon: MapPin },
 ];

@@ -8,7 +8,7 @@ import Button from "@/components/ui/Button";
 const PROJECTS = [
   {
     title: "Commercial Complex",
-    desc: "A landmark development combining a vibrant commercial complex with elegantly designed luxury villas, crafted with world-class standards and timeless architecture.",
+    desc: "Proudly work alongside prominent developers Talal Mustafa Group and Thabat, undertaking comprehensive plumbing and electrical works across their projects. With a focus on precision, safety, and timely delivery, we ensure that all systems are installed and maintained to the highest industry standards.",
     category: "Construction",
     image: "/home/commercial-complex.jpeg",
     stats: {

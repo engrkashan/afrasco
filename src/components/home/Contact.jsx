@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { Phone, Mail, MapPin, Send } from "lucide-react";
+import { useState, useRef } from "react";
+import { Phone, Mail, MapPin, Send, AlertCircle } from "lucide-react";
+import emailjs from "@emailjs/browser";
 import {
   FadeInUp,
   HoverCard,
@@ -82,6 +83,8 @@ export default function Contact() {
     message: "",
   });
 
+  const formRef = useRef();
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
@@ -94,16 +97,33 @@ export default function Contact() {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    // Simulate API call
-    setTimeout(() => {
-      console.log("Form submitted:", form);
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || serviceId === 'your_service_id') {
+      console.error('EmailJS keys are not configured in .env');
+      setTimeout(() => {
+        setIsSubmitting(false);
+        setSubmitStatus("error");
+      }, 1000);
+      return;
+    }
+
+    emailjs.sendForm(serviceId, templateId, formRef.current, {
+      publicKey: publicKey,
+    })
+    .then(() => {
       setIsSubmitting(false);
       setSubmitStatus("success");
       setForm({ name: "", phone: "", email: "", message: "" });
-
-      // Clear success message after 3 seconds
-      setTimeout(() => setSubmitStatus(null), 3000);
-    }, 1500);
+      setTimeout(() => setSubmitStatus(null), 5000);
+    })
+    .catch((error) => {
+      console.error('EmailJS Error:', error);
+      setIsSubmitting(false);
+      setSubmitStatus("error");
+    });
   };
 
   return (
@@ -191,7 +211,7 @@ export default function Contact() {
                 borderColor: theme.border,
               }}
             >
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
                 {/* Name */}
                 <MotionDiv
                   initial={{ opacity: 0, x: -20 }}
@@ -347,6 +367,24 @@ export default function Contact() {
                       }}
                     >
                       ✓ Message sent successfully! We'll get back to you soon.
+                    </MotionDiv>
+                  )}
+
+                  {/* Error Message */}
+                  {submitStatus === "error" && (
+                    <MotionDiv
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="mt-3 p-3 rounded-md text-center text-sm font-medium flex items-center justify-center gap-2"
+                      style={{
+                        backgroundColor: "rgba(239, 68, 68, 0.1)",
+                        color: "#dc2626",
+                        border: "1px solid rgba(239, 68, 68, 0.2)",
+                      }}
+                    >
+                      <AlertCircle className="w-4 h-4" />
+                      Oops! Failed to send message. Please try again.
                     </MotionDiv>
                   )}
                 </MotionDiv>
