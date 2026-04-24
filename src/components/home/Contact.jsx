@@ -80,7 +80,9 @@ export default function Contact() {
     name: "",
     phone: "",
     email: "",
+    title: "",
     message: "",
+    website: "afrasco.com",
   });
 
   const formRef = useRef();
@@ -113,17 +115,17 @@ export default function Contact() {
     emailjs.sendForm(serviceId, templateId, formRef.current, {
       publicKey: publicKey,
     })
-    .then(() => {
-      setIsSubmitting(false);
-      setSubmitStatus("success");
-      setForm({ name: "", phone: "", email: "", message: "" });
-      setTimeout(() => setSubmitStatus(null), 5000);
-    })
-    .catch((error) => {
-      console.error('EmailJS Error:', error);
-      setIsSubmitting(false);
-      setSubmitStatus("error");
-    });
+      .then(() => {
+        setIsSubmitting(false);
+        setSubmitStatus("success");
+        setForm({ name: "", phone: "", email: "", message: "" });
+        setTimeout(() => setSubmitStatus(null), 5000);
+      })
+      .catch((error) => {
+        console.error('EmailJS Error:', error);
+        setIsSubmitting(false);
+        setSubmitStatus("error");
+      });
   };
 
   return (
@@ -291,6 +293,36 @@ export default function Contact() {
                       onChange={handleChange}
                       type="email"
                       placeholder="you@example.com"
+                      className="w-full h-10 px-3 rounded-md border outline-none focus:ring-2 focus:ring-opacity-50 transition-all"
+                      style={{ borderColor: theme.border }}
+                      required
+                    />
+                  </MotionDiv>
+                </MotionDiv>
+
+
+                {/* Title */}
+                <MotionDiv
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.7 }}
+                >
+                  <label
+                    className="text-sm font-medium block mb-1.5"
+                    style={{ color: theme.primary }}
+                  >
+                    Subject
+                  </label>
+                  <MotionDiv
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.99 }}
+                  >
+                    <input
+                      name="title"
+                      value={form.title}
+                      onChange={handleChange}
+                      type="text"
+                      placeholder="Subject"
                       className="w-full h-10 px-3 rounded-md border outline-none focus:ring-2 focus:ring-opacity-50 transition-all"
                       style={{ borderColor: theme.border }}
                       required
