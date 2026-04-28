@@ -24,7 +24,7 @@ const ServiceCard = memo(({ service, index, onHover }) => {
             alt={service.title}
             width={500}
             height={500}
-            className="object-cover"
+            className="object-cover h-full w-full"
           />
         ) : (
           <div className="w-full h-full bg-slate-100 flex items-center justify-center">
