@@ -96,7 +96,7 @@ export const SERVICES = [
   },
   {
     title: "Infrastructure Projects",
-    desc: "Large-scale civil engineering projects including roads, water networks, sewage systems, and urban infrastructure development.",
+    desc: "Large-scale civil engineering projects including homes, buildings, water networks, sewage systems, and urban infrastructure development.",
     icon: Building2,
     image: "/services/infrastructure.png",
   },

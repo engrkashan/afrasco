@@ -139,8 +139,8 @@ export default function About() {
   ];
 
   const stats = [
-    { value: "50", suffix: "+", label: "Projects Completed" },
-    { value: "100", suffix: "+", label: "Happy Clients" },
+    { value: "30", suffix: "+", label: "Projects Completed" },
+    { value: "20", suffix: "+", label: "Happy Clients" },
     { value: "150", suffix: "+", label: "Expert Workers" },
   ];
 

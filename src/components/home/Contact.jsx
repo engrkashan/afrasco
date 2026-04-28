@@ -24,9 +24,9 @@ const theme = {
 const CONTACT_INFO = [
   {
     title: "Phone",
-    value: "+966 53 020 7010",
+    value: "+966 53 535 3378",
     icon: Phone,
-    link: "tel:+966530207010",
+    link: "tel:+966 53 535 3378",
   },
   {
     title: "Email",

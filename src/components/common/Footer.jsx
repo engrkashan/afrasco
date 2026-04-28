@@ -130,7 +130,7 @@ const Footer = () => {
                     />
                   </MotionDiv>
                   <span style={{ color: "rgba(255,255,255,0.6)" }}>
-+966 53 020 7010
+                    +966 53 535 3378
                   </span>
                 </MotionDiv>
               </StaggerItem>
