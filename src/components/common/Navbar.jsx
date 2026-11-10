@@ -35,15 +35,15 @@ const Navbar = () => {
           scrolled ? "bg-[#0f172a] shadow-sm" : "bg-transparent"
         }`}
       >
-        <div className="container h-16 flex items-center justify-between">
+        <div className="container h-20 flex items-center justify-between">
           {/* Logo with hover animation */}
           <MotionDiv whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
               href="#home"
               className="font-bold text-xl transition hover:opacity-80"
-              style={{ color: "var(--white)" }}
+              n
             >
-             <Image src="/logo.png" alt="Logo" width={100} height={100} />
+             <Image src="/logo.1.png" alt="Logo" width={100} height={100} />
             </Link>
           </MotionDiv>
 
