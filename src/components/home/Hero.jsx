@@ -41,7 +41,7 @@ export default function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 flex flex-col items-center">
+      <div className="relative z-10 container flex flex-col items-center">
         <div className="max-w-3xl text-white text-center">
 
           <FadeInUp delay={0.3}>

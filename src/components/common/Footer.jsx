@@ -39,7 +39,7 @@ const Footer = () => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
       variants={fadeInUp}
-      className="relative overflow-hidden px-10"
+      className="relative overflow-hidden"
       style={{ backgroundColor: "var(--primary)" }}
     >
       {/* Animated Background Elements */}
@@ -258,7 +258,7 @@ const Footer = () => {
         className="py-6 text-center text-sm"
         style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}
       >
-        <div className="container px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="container flex flex-col md:flex-row justify-between items-center gap-4">
           <MotionDiv
             whileHover={{ scale: 1.05 }}
             style={{ color: "rgba(255,255,255,0.4)" }}
@@ -271,7 +271,7 @@ const Footer = () => {
               variant="ghost"
               size="sm"
               onClick={scrollToTop}
-              className="text-white/60 hover:text-white group hover:bg-transparent!"
+              className="text-white/60 hover:text-white group hover:!bg-transparent"
               icon={<ArrowUp className="w-4 h-4" />}
               iconPosition="left"
             >

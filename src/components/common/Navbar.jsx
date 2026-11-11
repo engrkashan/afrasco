@@ -41,9 +41,8 @@ const Navbar = () => {
             <Link
               href="#home"
               className="font-bold text-xl transition hover:opacity-80"
-              n
             >
-             <Image src="/logo.1.png" alt="Logo" width={100} height={100} />
+             <Image src="/logo.png" alt="Logo" width={70} height={80} />
             </Link>
           </MotionDiv>
 
@@ -72,7 +71,7 @@ const Navbar = () => {
           </MotionDiv>
 
           {/* CTA and Mobile Menu */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 lg:hidden">
 
             <MotionDiv whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
               <button
@@ -111,7 +110,7 @@ const Navbar = () => {
             variants={staggerContainer}
             initial="closed"
             animate={open ? "open" : "closed"}
-            className="container mx-auto px-4 py-4 flex flex-col gap-3"
+            className="container py-4 flex flex-col gap-3"
           >
             {NAV_ITEMS.map((item) => (
               <MotionDiv

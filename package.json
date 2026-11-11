@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "preview": "next preview",
-    "lint": "eslint"
+    "dev": "node node_modules/next/dist/bin/next dev",
+    "build": "node node_modules/next/dist/bin/next build",
+    "start": "node node_modules/next/dist/bin/next start",
+    "preview": "node node_modules/next/dist/bin/next preview",
+    "lint": "node node_modules/eslint/bin/eslint.js"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -18,9 +18,10 @@
     "react-dom": "19.2.4"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
+    "autoprefixer": "^10",
     "eslint": "^9",
     "eslint-config-next": "16.2.3",
-    "tailwindcss": "^4"
+    "postcss": "^8",
+    "tailwindcss": "^3.4.17"
   }
 }
